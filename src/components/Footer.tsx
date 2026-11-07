@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TextRepel } from './TextRepel';
 import FooterCTA from './FooterCTA';
+import LegalModal from './LegalModal';
 import styles from './Footer.module.css';
 
 const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -31,6 +33,7 @@ const YoutubeIcon = () => (
 const CURRENT_YEAR = new Date().getFullYear();
 
 const Footer = () => {
+  const [legalModal, setLegalModal] = useState<'privacy' | 'terms' | 'cookies' | null>(null);
 
   return (
     <div className={styles.footerWrapper}>
@@ -128,14 +131,21 @@ const Footer = () => {
               &copy; {CURRENT_YEAR} Career Expert Global Solution. All rights reserved.
             </div>
             <div className={styles.legalLinks}>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Terms of Service</a>
-              <a href="#">Cookie Policy</a>
+              <button type="button" onClick={() => setLegalModal('privacy')} className={styles.legalBtn}>Privacy Policy</button>
+              <button type="button" onClick={() => setLegalModal('terms')} className={styles.legalBtn}>Terms of Service</button>
+              <button type="button" onClick={() => setLegalModal('cookies')} className={styles.legalBtn}>Cookie Policy</button>
             </div>
           </div>
 
         </div>
       </footer>
+
+      {/* Interactive Compliance & Legal Modal */}
+      <LegalModal
+        isOpen={!!legalModal}
+        type={legalModal}
+        onClose={() => setLegalModal(null)}
+      />
     </div>
   );
 };

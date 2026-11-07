@@ -175,7 +175,12 @@
   gap: 24px;
 }
 
-.legalLinks a {
+.legalLinks a,
+.legalBtn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   font-family: var(--font-body, 'Inter', sans-serif);
   font-size: 14px;
   color: var(--text-muted);
@@ -183,8 +188,9 @@
   transition: color 0.3s ease;
 }
 
-.legalLinks a:hover {
-  color: var(--text);
+.legalLinks a:hover,
+.legalBtn:hover {
+  color: var(--gold);
 }
 
 @media (max-width: 1024px) {
