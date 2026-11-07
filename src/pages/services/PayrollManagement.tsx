@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
 import { FileText, FileCheck, Gift, BarChart2, Database, ShieldCheck, Lock, DollarSign } from 'lucide-react';
 import styles from './PayrollManagement.module.css';
 
 const PayrollManagement = () => {
+  useEffect(() => {
+    document.title = "Payroll Management Services | CEGS";
+  }, []);
 
   const servicesList = [
     {

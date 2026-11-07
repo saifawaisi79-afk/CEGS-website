@@ -1,29 +1,8 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Star, Target, Shield, Users, Briefcase, Globe, Heart, Zap, Clock } from 'lucide-react';
 import { MagneticHeading, WaveLetterText } from '../components/InteractiveMotionText';
 import styles from './AboutUs.module.css';
-
-// Animated Typography component for staggered letter reveal
-const AnimatedText = ({ text, className }: { text: string, className: string }) => {
-  const words = text.split(" ");
-  return (
-    <motion.div className={className} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-10%" }}>
-      {words.map((word, i) => (
-        <motion.span
-          key={i}
-          style={{ display: "inline-block", marginRight: "0.25em" }}
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.6, delay: i * 0.05, ease: [0.2, 0.65, 0.3, 0.9] } }
-          }}
-        >
-          {word}
-        </motion.span>
-      ))}
-    </motion.div>
-  );
-};
 
 const FloatingIcon = ({ children, xOffset, yOffset, delay, duration }: any) => {
   return (
@@ -45,6 +24,9 @@ const FloatingIcon = ({ children, xOffset, yOffset, delay, duration }: any) => {
 };
 
 const AboutUs = () => {
+  useEffect(() => {
+    document.title = "About Us | CEGS - Career Expert Global Solution";
+  }, []);
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -185,7 +167,7 @@ const AboutUs = () => {
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <img src="/images/WhatsApp Image 2026-09-15 at 12.58.43 PM.jpeg" alt="Mohammed Usman Zabi" className={styles.directorImage} />
+              <img src="/images/mohammed_usman_zabi.jpeg" alt="Mohammed Usman Zabi" className={styles.directorImage} />
             </motion.div>
             <div className={styles.directorInfo}>
               <h3 className={styles.directorName}>Mohammed Usman Zabi</h3>

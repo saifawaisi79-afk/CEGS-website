@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Hero from '../components/Hero'
 import About from '../components/About'
 import Insights from '../components/Insights'
@@ -10,6 +11,15 @@ import MissionVision from '../components/MissionVision'
 import Reviews from '../components/Reviews'
 
 const Home = () => {
+  useEffect(() => {
+    document.title = "CEGS - Career Expert Global Solution | IT & HR Solutions";
+    if (window.location.hash) {
+      const el = document.getElementById(window.location.hash.substring(1));
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
+      }
+    }
+  }, []);
   return (
     <>
       <Hero />

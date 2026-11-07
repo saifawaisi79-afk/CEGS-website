@@ -1,5 +1,5 @@
-import { useState, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import styles from './WhyChooseUs.module.css';
 
 const reasons = [
@@ -62,7 +62,7 @@ const WhyChooseUs = () => {
           </motion.div>
 
           <div className={styles.cardsList}>
-            {reasons.map((reason, index) => (
+            {reasons.map((reason) => (
               <motion.div 
                 key={reason.number} 
                 className={styles.card}

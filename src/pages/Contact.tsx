@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { z } from 'zod';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, Send, Navigation } from 'lucide-react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -89,9 +89,10 @@ const contactSchema = z.object({
     )
 });
 
-type ContactFormValues = z.infer<typeof contactSchema>;
-
 const Contact = () => {
+  const [searchParams] = useSearchParams();
+  const jobParam = searchParams.get('job');
+
   useEffect(() => {
     document.title = "Contact Us | CEGS";
   }, []);
@@ -100,8 +101,8 @@ const Contact = () => {
     fullName: '',
     email: '',
     phone: '',
-    referredBy: '',
-    message: '',
+    referredBy: jobParam ? 'Careers Portal Application' : '',
+    message: jobParam ? `Applying for role: ${jobParam}` : '',
     agree: false
   });
   
@@ -112,7 +113,6 @@ const Contact = () => {
   const [serverError, setServerError] = useState('');
 
   const formRef = useRef<HTMLFormElement>(null);
-  const firstErrorRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
 

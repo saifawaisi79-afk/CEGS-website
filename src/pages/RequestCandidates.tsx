@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../lib/emailjs';
 import { motion } from 'framer-motion';
@@ -11,6 +11,10 @@ import { Link } from 'react-router-dom';
 import styles from './RequestCandidates.module.css';
 
 const RequestCandidates = () => {
+  useEffect(() => {
+    document.title = "Hire Talent & Get Placed | CEGS";
+  }, []);
+
   const [activeTab, setActiveTab] = useState<'client' | 'candidate'>('client');
 
   // Client Form State

@@ -31,7 +31,7 @@ export const services: Service[] = [
     image: "/images/web_development.jpg"
   },
   {
-    id: "bpo-sales",
+    id: "bpo-kpo-services",
     title: "BPO/KPO & Inside Sales",
     shortDescription: "High-performance outsourced operations and inside sales staffing.",
     image: "/images/bpo_sales.jpg"

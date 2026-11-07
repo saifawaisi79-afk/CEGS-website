@@ -177,18 +177,19 @@ const Hero = () => {
               <motion.h1 variants={itemVariants as any} custom={direction} className={styles.title}>{activeService.title}</motion.h1>
               <motion.p variants={itemVariants as any} custom={direction} className={styles.description}>{activeService.shortDescription}</motion.p>
               
-              <Link
-                to={`/services/${activeService.id}`}
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                style={{ textDecoration: 'none' }}
-              >
-                <motion.button variants={itemVariants as any} custom={direction} className={styles.exploreButton}>
+              <motion.div variants={itemVariants as any} custom={direction}>
+                <Link
+                  to={`/services/${activeService.id}`}
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className={styles.exploreButton}
+                  style={{ textDecoration: 'none' }}
+                >
                   <span>Explore Service</span>
                   <div className={styles.iconCircle}>
                     <ArrowRight size={18} />
                   </div>
-                </motion.button>
-              </Link>
+                </Link>
+              </motion.div>
             </motion.div>
           </AnimatePresence>
         </div>

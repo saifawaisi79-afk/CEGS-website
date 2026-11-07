@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   X, Building2, Briefcase, Phone, Mail, User, MapPin, 
   CheckCircle, Upload, ArrowRight, ShieldCheck, GraduationCap, 
-  FileText, Clock, Sparkles 
+  Clock, Sparkles 
 } from 'lucide-react';
 import styles from './RequestCandidatesModal.module.css';
 

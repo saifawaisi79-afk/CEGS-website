@@ -63,7 +63,7 @@ const StatCard = ({ stat, index }: { stat: typeof statsData[0], index: number })
 
 const Insights = () => {
   return (
-    <section className={styles.section}>
+    <section id="insights" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.grid}>
           {statsData.map((stat, index) => (

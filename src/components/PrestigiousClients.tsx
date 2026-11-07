@@ -4,8 +4,6 @@ import { clientRow1, clientRow2, type ClientLogo } from '../data/clients';
 import styles from './PrestigiousClients.module.css';
 
 const LogoItem = ({ client }: { client: ClientLogo }) => {
-  const isPlaceholder = !client.verified;
-  
   return (
     <div 
       className={styles.logoCard}

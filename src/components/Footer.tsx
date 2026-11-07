@@ -28,8 +28,9 @@ const YoutubeIcon = () => (
   </svg>
 );
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
 
   return (
     <div className={styles.footerWrapper}>
@@ -124,7 +125,7 @@ const Footer = () => {
           {/* Bottom Copyright Bar */}
           <div className={styles.bottomBar}>
             <div className={styles.copyright}>
-              &copy; {currentYear} Career Expert Global Solution. All rights reserved.
+              &copy; {CURRENT_YEAR} Career Expert Global Solution. All rights reserved.
             </div>
             <div className={styles.legalLinks}>
               <a href="#">Privacy Policy</a>

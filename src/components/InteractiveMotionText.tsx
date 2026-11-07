@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion, useSpring } from 'framer-motion';
 import styles from './InteractiveMotionText.module.css';
 

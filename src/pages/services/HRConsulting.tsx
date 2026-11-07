@@ -1,16 +1,14 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import { Users, BookOpen, HeartHandshake, ShieldCheck, TrendingUp, Award } from 'lucide-react';
 import styles from './HRConsulting.module.css';
 
 const HRConsulting = () => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
+  useEffect(() => {
+    document.title = "HR Consulting & Strategy | CEGS";
+  }, []);
 
-  const parallaxY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const containerRef = useRef(null);
 
   const servicesList = [
     {
