@@ -297,6 +297,21 @@
   color: var(--gold);
   border-radius: 100px;
   border: 1px solid var(--gold-border);
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              background 0.3s ease,
+              color 0.3s ease,
+              box-shadow 0.3s ease;
+  user-select: none;
+}
+
+.tag:hover,
+.tag:focus-visible {
+  transform: translateY(-3px) scale(1.08);
+  background: rgba(189, 159, 103, 0.25);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(189, 159, 103, 0.4);
 }
 
 /* What Makes Us Different */
@@ -464,6 +479,15 @@
   font-size: 16px;
   font-weight: 700;
   margin-bottom: 12px;
+  color: var(--text);
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.valueCard:hover .valueTitle,
+.valueTitle:hover {
+  transform: translateY(-3px) scale(1.04);
 }
 
 .valueDesc {
@@ -471,6 +495,11 @@
   font-size: 12px;
   color: var(--text-muted);
   line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.valueCard:hover .valueDesc {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* Responsive */

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" width="200" height="64">
+  <rect x="1.5" y="1.5" width="197" height="61" rx="8" fill="#111827" stroke="#4B5563" stroke-width="1.5" stroke-dasharray="4 3" />
+  <text x="100" y="28" fill="#F3F4F6" font-family="'Montserrat', system-ui, sans-serif" font-size="12.5" font-weight="700" text-anchor="middle" letter-spacing="0.5">Growth Accelerator</text>
+  <rect x="42" y="38" width="116" height="17" rx="4" fill="#1F2937" stroke="#D2BE60" stroke-width="0.8" />
+  <text x="100" y="50" fill="#D2BE60" font-family="'Montserrat', system-ui, sans-serif" font-size="8" font-weight="700" text-anchor="middle" letter-spacing="0.8">LOGO PENDING</text>
+</svg>

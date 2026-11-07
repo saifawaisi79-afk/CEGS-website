@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 70" width="260" height="70">
+  <g fill="#0A0F1D">
+    <!-- Left Stylized 1 Bracket -->
+    <path d="M12,14 L24,2 L24,52 L14,52 L14,19 L12,21 Z" />
+    <rect x="29" y="2" width="7" height="50" rx="1.5" />
+    
+    <!-- Bold POINT Text -->
+    <text x="44" y="44" font-family="'Montserrat', 'Arial Black', sans-serif" font-size="44" font-weight="900" letter-spacing="2">POINT</text>
+    
+    <!-- Right Stylized 1 Bracket -->
+    <rect x="206" y="2" width="7" height="50" rx="1.5" />
+    <path d="M221,14 L233,2 L233,52 L223,52 L223,19 L221,21 Z" />
+    <text x="236" y="14" font-family="'Arial', sans-serif" font-size="9" font-weight="800">TM</text>
+  </g>
+  <!-- Subtitle -->
+  <text x="130" y="64" fill="#3B82F6" font-family="'Montserrat', 'Arial', sans-serif" font-size="8.5" font-weight="700" letter-spacing="3" text-anchor="middle">BUSINESS PROCESS PARTNERS</text>
+</svg>

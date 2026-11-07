@@ -1,0 +1,88 @@
+.magneticWrapper {
+  display: block;
+  perspective: 800px;
+  cursor: default;
+  will-change: transform;
+  width: 100%;
+}
+
+.magneticContent {
+  margin: 0;
+  display: block;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+/* Individual Letter Wave / Motion Container */
+.waveContainer {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.wordWrapper {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+.space {
+  display: inline;
+}
+
+.char {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+/* Hover / Tap state for letters: pure physical wave float upward + subtle tilt without changing color */
+.char[data-active="true"] {
+  transform: translateY(-5px) rotate(-2deg);
+}
+
+/* Alternate slight tilt for even letters for a natural organic wave */
+.char:nth-child(even)[data-active="true"] {
+  transform: translateY(-7px) rotate(2deg);
+}
+
+/* Highlight word chars default styling */
+.highlightChar {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.highlightChar[data-active="true"] {
+  /* Preserves original gold gradient */
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Accessibility: Keyboard focus visible */
+.waveContainer:focus-visible .char,
+.magneticWrapper:focus-visible .magneticContent {
+  outline: none;
+}
+
+/* Accessibility: Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .magneticWrapper {
+    transform: none !important;
+  }
+  .char {
+    transition: none !important;
+    transform: none !important;
+  }
+}

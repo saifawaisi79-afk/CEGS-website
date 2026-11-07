@@ -395,3 +395,207 @@ a.infoCard:hover {
     padding: 24px;
   }
 }
+
+/* Social Connect Card */
+.socialCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 28px 24px;
+}
+
+.socialTitle {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.socialDesc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.socialList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.socialLinkItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.socialLinkItem:hover {
+  background: var(--gold-glow);
+  border-color: var(--gold-border);
+  color: var(--gold);
+  transform: translateX(4px);
+}
+
+.socialItemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+}
+
+/* Map Section */
+.mapSection {
+  padding: 60px 0 20px;
+  position: relative;
+}
+
+.mapHeader {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.mapTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: var(--text);
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.mapSubtitle {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text-secondary);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.mapCard {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  background: #111;
+}
+
+.mapContainer {
+  width: 100%;
+  height: 440px;
+  min-height: 440px;
+  z-index: 1;
+}
+
+.mapOverlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 500;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+}
+
+.mapOverlayInner {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 22px;
+  background: rgba(14, 14, 16, 0.9);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  max-width: 600px;
+  width: 100%;
+}
+
+.mapOverlayIcon {
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.mapOverlayTitle {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 2px 0;
+}
+
+.mapOverlayAddr {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.mapDirectionsBtn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background: linear-gradient(135deg, #d4af37 0%, #b89628 100%);
+  color: #0b0b0d;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 13px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+  flex-shrink: 0;
+}
+
+.mapDirectionsBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.55);
+  color: #000;
+}
+
+@media (max-width: 640px) {
+  .mapContainer {
+    height: 380px;
+  }
+
+  .mapOverlay {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+  }
+
+  .mapOverlayInner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  .mapDirectionsBtn {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+  }
+}
+
+

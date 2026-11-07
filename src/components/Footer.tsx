@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
 import { TextRepel } from './TextRepel';
 import FooterCTA from './FooterCTA';
 import styles from './Footer.module.css';
 
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
 const LinkedinIcon = () => (
-// ... (I will keep the SVG icons exactly as they are)
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
     <rect x="2" y="9" width="4" height="12"></rect>
@@ -11,9 +13,18 @@ const LinkedinIcon = () => (
   </svg>
 );
 
-const TwitterIcon = () => (
+const InstagramIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+  </svg>
+);
+
+const YoutubeIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
+    <polygon points="10 15 15 12 10 9 10 15"></polygon>
   </svg>
 );
 
@@ -45,16 +56,42 @@ const Footer = () => {
 
             {/* Brand Info */}
             <div className={styles.brandColumn}>
-              <div className={styles.logo}>CEGS</div>
+              <div className={styles.logo}>
+                <img src="/cegs-logo.jpg" alt="CEGS - Career Expert Global Solution" className={styles.logoImg} />
+              </div>
               <p className={styles.brandDesc}>
                 Delivering top-tier recruitment and workforce solutions across multiple industries. We connect great companies with exceptional talent.
               </p>
               <div className={styles.socialLinks}>
-                <a href="#" className={styles.socialIcon} aria-label="LinkedIn">
+                <a 
+                  href="https://www.linkedin.com/company/103281318/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={styles.socialIcon} 
+                  aria-label="LinkedIn"
+                  title="Follow us on LinkedIn"
+                >
                   <LinkedinIcon />
                 </a>
-                <a href="#" className={styles.socialIcon} aria-label="Twitter">
-                  <TwitterIcon />
+                <a 
+                  href="https://www.instagram.com/career_expert.global_solutions?psln=azR6bmFwNzI0dGNr&utm_source=qr" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={styles.socialIcon} 
+                  aria-label="Instagram"
+                  title="Follow us on Instagram"
+                >
+                  <InstagramIcon />
+                </a>
+                <a 
+                  href="https://www.youtube.com/@CareerExpertGlobalSolution" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={styles.socialIcon} 
+                  aria-label="YouTube"
+                  title="Subscribe on YouTube"
+                >
+                  <YoutubeIcon />
                 </a>
               </div>
             </div>
@@ -63,22 +100,22 @@ const Footer = () => {
             <div>
               <h3 className={styles.linkColumnTitle}>Company</h3>
               <ul className={styles.linksList}>
-                <li className={styles.linkItem}><a href="#">About Us</a></li>
-                <li className={styles.linkItem}><a href="#">Our Services</a></li>
-                <li className={styles.linkItem}><a href="#">Industries</a></li>
-                <li className={styles.linkItem}><a href="#">Why Choose CEGS</a></li>
-                <li className={styles.linkItem}><a href="#">Contact</a></li>
+                <li className={styles.linkItem}><Link to="/about" onClick={scrollToTop}>About Us</Link></li>
+                <li className={styles.linkItem}><Link to="/services" onClick={scrollToTop}>Our Services</Link></li>
+                <li className={styles.linkItem}><Link to="/request-candidates" onClick={scrollToTop}>Hire & Get Placed</Link></li>
+                <li className={styles.linkItem}><Link to="/careers" onClick={scrollToTop}>Careers & Jobs</Link></li>
+                <li className={styles.linkItem}><Link to="/contact" onClick={scrollToTop}>Contact</Link></li>
               </ul>
             </div>
 
-            {/* Resources / Legal */}
+            {/* Resources / Services */}
             <div>
-              <h3 className={styles.linkColumnTitle}>Resources</h3>
+              <h3 className={styles.linkColumnTitle}>Services</h3>
               <ul className={styles.linksList}>
-                <li className={styles.linkItem}><a href="#">Case Studies</a></li>
-                <li className={styles.linkItem}><a href="#">Blog & News</a></li>
-                <li className={styles.linkItem}><a href="#">Career Opportunities</a></li>
-                <li className={styles.linkItem}><a href="#">FAQ</a></li>
+                <li className={styles.linkItem}><Link to="/services/bpo-kpo-services" onClick={scrollToTop}>BPO / KPO Staffing</Link></li>
+                <li className={styles.linkItem}><Link to="/services/staffing-solutions" onClick={scrollToTop}>Staffing Solutions</Link></li>
+                <li className={styles.linkItem}><Link to="/services/web-development" onClick={scrollToTop}>Web Development</Link></li>
+                <li className={styles.linkItem}><Link to="/services/payroll-management" onClick={scrollToTop}>Payroll Management</Link></li>
               </ul>
             </div>
 

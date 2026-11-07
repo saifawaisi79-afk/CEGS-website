@@ -157,7 +157,7 @@ const Reviews = () => {
         >
           <div className={styles.badge}>
             <Star className={styles.badgeIcon} size={14} fill="currentColor" />
-            CLIENT TESTIMONIALS
+            4.9 GOOGLE RATING &bull; CLIENT TESTIMONIALS
           </div>
           <h2 className={styles.heading}>
             What Our <span className={styles.highlight}>Candidates</span> Say

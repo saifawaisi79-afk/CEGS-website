@@ -1,8 +1,36 @@
 import React, { useState, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { z } from 'zod';
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, Send } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, Navigation } from 'lucide-react';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import styles from './Contact.module.css';
+import { EMAILJS_CONFIG } from '../lib/emailjs';
+
+const LinkedinIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+    <rect x="2" y="9" width="4" height="12"></rect>
+    <circle cx="4" cy="4" r="2"></circle>
+  </svg>
+);
+
+const InstagramIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+  </svg>
+);
+
+const YoutubeIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
+    <polygon points="10 15 15 12 10 9 10 15"></polygon>
+  </svg>
+);
+
 
 // Info Cards Data
 const infoCards = [
@@ -10,26 +38,28 @@ const infoCards = [
     icon: <Phone size={24} />,
     title: "Call Us",
     desc: "Ready to help you anytime",
-    // TODO: Replace with real phone number
-    href: "tel:+910000000000",
-    label: "+91 00000 00000 (PLACEHOLDER)"
+    href: "tel:+918861288641",
+    label: "+91 88612 88641"
   },
   {
     icon: <Mail size={24} />,
     title: "Email Us",
     desc: "Send us a detailed message",
-    href: "mailto:contact@cegs.com",
-    label: "contact@cegs.com"
+    href: "mailto:info@careerexpertglobalsolution.com",
+    label: "info@careerexpertglobalsolution.com"
   },
   {
     icon: <MapPin size={24} />,
     title: "Visit Us",
     desc: "Come see us in person",
-    // TODO: Replace with real Google Maps link and address
-    href: "https://maps.google.com",
-    label: "Bangalore, India (PLACEHOLDER)"
+    href: "https://maps.app.goo.gl/JL8ebW9oDwxzCZ8p6",
+    label: "1/3 Masjid St, Neelasandra, Bengaluru 560047"
   }
 ];
+
+// Office coordinates from Google Maps
+const OFFICE_LAT = 12.9545582;
+const OFFICE_LNG = 77.6114838;
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const ACCEPTED_FILE_TYPES = [
@@ -83,6 +113,86 @@ const Contact = () => {
 
   const formRef = useRef<HTMLFormElement>(null);
   const firstErrorRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<L.Map | null>(null);
+
+  // Initialize Leaflet Map with CartoDB Dark Matter tiles (100% Free, reliable raster tiles)
+  useEffect(() => {
+    if (!mapContainerRef.current || mapInstanceRef.current) return;
+
+    const map = L.map(mapContainerRef.current, {
+      center: [OFFICE_LAT, OFFICE_LNG],
+      zoom: 16,
+      scrollWheelZoom: false,
+      zoomControl: true,
+      attributionControl: false,
+    });
+
+    // CartoDB Dark Matter tiles — high contrast dark mode with crisp street names
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      subdomains: 'abcd',
+      maxZoom: 20,
+    }).addTo(map);
+
+    // Custom pulsing gold radar beacon
+    const goldIcon = L.divIcon({
+      className: 'cegs-custom-marker-wrapper',
+      html: `
+        <div style="position:relative;width:56px;height:56px;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);">
+          <span style="position:absolute;width:100%;height:100%;border-radius:50%;background:rgba(212,175,55,0.35);animation:cegsPulse 2.2s infinite ease-out;"></span>
+          <span style="position:absolute;width:66%;height:66%;border-radius:50%;background:rgba(212,175,55,0.55);animation:cegsPulse 2.2s infinite ease-out 0.6s;"></span>
+          <div style="position:relative;z-index:3;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#fbe795 0%,#d4af37 55%,#8e7019 100%);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(212,175,55,0.9),0 6px 14px rgba(0,0,0,0.8);border:2px solid #ffffff;">
+            <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='#0b0b0d' stroke='#0b0b0d' stroke-width='0.5'>
+              <path d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/>
+              <circle cx='12' cy='10' r='3' fill='#d4af37'/>
+            </svg>
+          </div>
+        </div>
+      `,
+      iconSize: [0, 0],
+      iconAnchor: [0, 0],
+    });
+
+    const marker = L.marker([OFFICE_LAT, OFFICE_LNG], { icon: goldIcon }).addTo(map);
+
+    marker.bindPopup(`
+      <div style="font-family:var(--font-heading,sans-serif);color:#fff;background:rgba(18,18,20,0.95);padding:10px 14px;border-radius:10px;border:1px solid rgba(212,175,55,0.45);text-align:center;box-shadow:0 8px 24px rgba(0,0,0,0.7);min-width:180px;">
+        <div style="color:#d4af37;font-weight:700;font-size:13px;letter-spacing:0.5px;margin-bottom:3px;">Career Expert Global Solution</div>
+        <div style="color:rgba(255,255,255,0.75);font-size:11px;line-height:1.4;">1/3 Masjid St, Neelasandra<br/>Bengaluru 560047</div>
+      </div>
+    `, {
+      className: 'cegs-leaflet-popup',
+      closeButton: false,
+      offset: [0, -22]
+    }).openPopup();
+
+    // Attribution
+    L.control.attribution({ position: 'bottomright', prefix: '© OpenStreetMap · CARTO' }).addTo(map);
+
+    mapInstanceRef.current = map;
+
+    // Critical: Force Leaflet to recalculate container size so tiles immediately download & render
+    const t1 = setTimeout(() => {
+      map.invalidateSize();
+    }, 150);
+
+    const t2 = setTimeout(() => {
+      map.invalidateSize();
+    }, 500);
+
+    const onResize = () => {
+      map.invalidateSize();
+    };
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener('resize', onResize);
+      map.remove();
+      mapInstanceRef.current = null;
+    };
+  }, []);
 
   // Validate form using Zod
   const validateForm = () => {
@@ -159,20 +269,22 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // =========================================================================
-      // NOTE ON ARCHITECTURE:
-      // This project is built as a Vite SPA (Static site). Next.js API Routes 
-      // (/api/*) are NOT available in this environment. 
-      // To fulfill the request for a fully functional frontend, we simulate 
-      // the API call here. In a real-world scenario, you will need to provision 
-      // a standalone Node.js (Express/Nest) server or a Serverless function 
-      // endpoint to handle database inserts, file uploads, and Nodemailer emails.
-      // =========================================================================
-      
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Simulate successful submission
+      // Send email via EmailJS
+      await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.CONTACT_TEMPLATE,
+        {
+          from_name:    formData.fullName,
+          from_email:   formData.email,
+          phone:        formData.phone,
+          referred_by:  formData.referredBy,
+          message:      formData.message,
+          to_email:     'info@careerexpertglobalsolution.com',
+          form_type:    'Contact Form',
+        },
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
       setSubmitStatus('success');
       setFormData({
         fullName: '',
@@ -186,8 +298,9 @@ const Contact = () => {
       if (formRef.current) formRef.current.reset();
 
     } catch (err) {
+      console.error('EmailJS error:', err);
       setSubmitStatus('error');
-      setServerError('An unexpected error occurred. Please try again later.');
+      setServerError('Failed to send your message. Please try again or email us directly at info@careerexpertglobalsolution.com');
     } finally {
       setIsSubmitting(false);
     }
@@ -239,6 +352,43 @@ const Contact = () => {
                   <p className={styles.infoDesc}>
                     We typically respond to all inquiries within 24 hours. For urgent matters, please call us directly.
                   </p>
+                </div>
+              </div>
+
+              {/* Social Media Connect Card */}
+              <div className={styles.socialCard}>
+                <h3 className={styles.socialTitle}>Connect Online</h3>
+                <p className={styles.socialDesc}>
+                  Follow us on our official channels for the latest recruitment updates, job openings, and announcements.
+                </p>
+                <div className={styles.socialList}>
+                  <a 
+                    href="https://www.linkedin.com/company/103281318/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.socialLinkItem}
+                  >
+                    <span className={styles.socialItemIcon}><LinkedinIcon /></span>
+                    <span>LinkedIn &bull; Career Expert Global Solution</span>
+                  </a>
+                  <a 
+                    href="https://www.instagram.com/career_expert.global_solutions?psln=azR6bmFwNzI0dGNr&utm_source=qr" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.socialLinkItem}
+                  >
+                    <span className={styles.socialItemIcon}><InstagramIcon /></span>
+                    <span>Instagram &bull; @career_expert.global_solutions</span>
+                  </a>
+                  <a 
+                    href="https://www.youtube.com/@CareerExpertGlobalSolution" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.socialLinkItem}
+                  >
+                    <span className={styles.socialItemIcon}><YoutubeIcon /></span>
+                    <span>YouTube &bull; @CareerExpertGlobalSolution</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -308,7 +458,7 @@ const Contact = () => {
                       type="tel" 
                       id="phone" 
                       name="phone"
-                      placeholder="+91 00000 00000"
+                      placeholder="+91 88612 88641"
                       className={styles.input}
                       value={formData.phone}
                       onChange={handleInputChange}
@@ -422,6 +572,44 @@ const Contact = () => {
               </form>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section className={styles.mapSection}>
+        <div className={styles.container}>
+          <div className={styles.mapHeader}>
+            <div className={styles.kickerBadge}>
+              <span className={styles.kickerDot}></span> OUR OFFICE
+            </div>
+            <h2 className={styles.mapTitle}>
+              Find Us <span className={styles.highlight}>Here</span>
+            </h2>
+            <p className={styles.mapSubtitle}>
+              Visit our office in the heart of Bengaluru &mdash; we&apos;d love to meet you in person.
+            </p>
+          </div>
+          <div className={styles.mapCard}>
+            <div className={styles.mapContainer} id="cegs-map" ref={mapContainerRef}></div>
+            <div className={styles.mapOverlay}>
+              <div className={styles.mapOverlayInner}>
+                <MapPin size={20} className={styles.mapOverlayIcon} />
+                <div>
+                  <h4 className={styles.mapOverlayTitle}>Career Expert Global Solution</h4>
+                  <p className={styles.mapOverlayAddr}>1/3 Masjid St, Neelasandra, Bengaluru 560047</p>
+                </div>
+                <a 
+                  href="https://maps.app.goo.gl/JL8ebW9oDwxzCZ8p6" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={styles.mapDirectionsBtn}
+                >
+                  <Navigation size={16} />
+                  Directions
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -19,9 +19,8 @@ const jobsData = [
   { id: 8, title: "HR Recruiter – BPO Hiring", category: "Human Resources", location: "Remote", type: "Part-Time", desc: "Manage end-to-end recruitment for voice and non-voice roles." },
   { id: 9, title: "Voice Process Associate", category: "Customer Service", location: "Mumbai, India", type: "Full-Time", desc: "Handle outbound/inbound voice calls and customer queries." },
   { id: 10, title: "Non-Voice Process Executive", category: "Customer Service", location: "Pune, India", type: "Full-Time", desc: "Manage chat and email support with timely resolutions." },
-  // TODO: Replace placeholders once real data for remaining jobs is provided
-  { id: 11, title: "Team Leader (PLACEHOLDER)", category: "Customer Service", location: "Bangalore, India", type: "Full-Time", desc: "Lead a team of executives and ensure SLA adherence." },
-  { id: 12, title: "Team Leader (PLACEHOLDER)", category: "Sales", location: "Remote", type: "Full-Time", desc: "Lead a team of executives and ensure SLA adherence." }
+  { id: 11, title: "Operations Team Leader", category: "Customer Service", location: "Bangalore, India", type: "Full-Time", desc: "Lead a team of executives and ensure SLA adherence." },
+  { id: 12, title: "Inside Sales Team Leader", category: "Sales", location: "Remote", type: "Full-Time", desc: "Lead a team of executives and ensure SLA adherence." }
 ];
 
 const benefitsList = [

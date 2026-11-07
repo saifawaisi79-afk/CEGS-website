@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Star, Target, Shield, Users, Briefcase, Globe, Heart, Zap, Clock } from 'lucide-react';
+import { MagneticHeading, WaveLetterText } from '../components/InteractiveMotionText';
 import styles from './AboutUs.module.css';
 
 // Animated Typography component for staggered letter reveal
@@ -82,7 +83,9 @@ const AboutUs = () => {
             <div className={styles.kickerBadge}>
               <span className={styles.kickerDot}></span> ABOUT CEGS
             </div>
-            <h1 className={styles.heroTitle}>Get to <span className={styles.highlight}>Know Us</span></h1>
+            <MagneticHeading as="h1" className={styles.heroTitle} strength={20} tiltStrength={6}>
+              <WaveLetterText text="Get to Know Us" highlightWords={["Know", "Us"]} />
+            </MagneticHeading>
             <p className={styles.heroSubtitle}>
               We are a passionate team dedicated to providing exceptional HR consulting, payroll management, IT staffing, and more.
             </p>
@@ -105,7 +108,7 @@ const AboutUs = () => {
             </div>
             <div className={styles.statDivider}></div>
             <div className={styles.statItem}>
-              <h3 className={styles.statNumber}>40K+</h3>
+              <h3 className={styles.statNumber}>2.5L+</h3>
               <p className={styles.statLabel}>PLACEMENTS</p>
             </div>
           </motion.div>
@@ -125,7 +128,9 @@ const AboutUs = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             <span className={styles.bracketKicker}>[ OUR STORY ]</span>
-            <AnimatedText text="About Our Company" className={styles.sectionTitle} />
+            <MagneticHeading as="h2" className={styles.sectionTitle} strength={15}>
+              <WaveLetterText text="About Our Company" highlightWords={["Company"]} />
+            </MagneticHeading>
           </motion.div>
           
           <motion.div 
@@ -162,7 +167,9 @@ const AboutUs = () => {
             viewport={{ once: true }}
           >
             <span className={styles.sectionKicker}>LEADERSHIP</span>
-            <h2 className={styles.sectionTitle}>Our <span className={styles.highlight}>Directors</span></h2>
+            <MagneticHeading as="h2" className={styles.sectionTitle} strength={15}>
+              <WaveLetterText text="Our Directors" highlightWords={["Directors"]} />
+            </MagneticHeading>
           </motion.div>
 
           {/* Mohammed Usman Zabi */}
@@ -246,7 +253,9 @@ const AboutUs = () => {
             viewport={{ once: true }}
           >
             <span className={styles.sectionKicker}>OUR APPROACH</span>
-            <h2 className={styles.sectionTitle}>What Makes Us <span className={styles.highlight}>Different</span></h2>
+            <MagneticHeading as="h2" className={styles.sectionTitle} strength={15}>
+              <WaveLetterText text="What Makes Us Different" highlightWords={["Different"]} />
+            </MagneticHeading>
           </motion.div>
 
           <div className={styles.differentGrid}>
@@ -265,7 +274,9 @@ const AboutUs = () => {
                 whileHover={{ y: -10, scale: 1.02, boxShadow: "0 20px 40px rgba(0,0,0,0.4)", borderColor: "var(--gold-border)" }}
               >
                 <div className={styles.diffIconWrapper}>{item.icon}</div>
-                <h4 className={styles.diffTitle}>{item.title}</h4>
+                <h4 className={styles.diffTitle}>
+                  <WaveLetterText text={item.title} />
+                </h4>
                 <p className={styles.diffDesc}>{item.desc}</p>
               </motion.div>
             ))}
@@ -283,7 +294,9 @@ const AboutUs = () => {
             viewport={{ once: true }}
           >
             <span className={styles.sectionKicker}>OUR TEAM</span>
-            <h2 className={styles.sectionTitle}>Leadership <span className={styles.highlight}>Team</span></h2>
+            <MagneticHeading as="h2" className={styles.sectionTitle} strength={15}>
+              <WaveLetterText text="Leadership Team" highlightWords={["Team"]} />
+            </MagneticHeading>
           </motion.div>
 
           <div className={styles.teamList}>
@@ -331,7 +344,9 @@ const AboutUs = () => {
             viewport={{ once: true }}
           >
             <span className={styles.sectionKicker}>OUR BELIEFS</span>
-            <h2 className={styles.sectionTitle}>Core <span className={styles.highlight}>Values</span></h2>
+            <MagneticHeading as="h2" className={styles.sectionTitle} strength={15}>
+              <WaveLetterText text="Core Values" highlightWords={["Values"]} />
+            </MagneticHeading>
           </motion.div>
 
           <div className={styles.valuesGrid}>
@@ -351,7 +366,9 @@ const AboutUs = () => {
                 whileHover={{ y: -10, boxShadow: "0 10px 30px var(--gold-glow)", borderColor: "var(--gold-border)" }}
               >
                 <div className={styles.valueIcon}>{value.icon}</div>
-                <h4 className={styles.valueTitle}>{value.title}</h4>
+                <h4 className={styles.valueTitle}>
+                  <WaveLetterText text={value.title} />
+                </h4>
                 <p className={styles.valueDesc}>{value.desc}</p>
               </motion.div>
             ))}

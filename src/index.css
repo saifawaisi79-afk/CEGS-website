@@ -76,3 +76,108 @@ input:focus, textarea:focus, select:focus {
   -webkit-background-clip: text;
   color: transparent;
 }
+
+/* MapLibre Dark & Gold Overrides */
+@keyframes cegsPulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.maplibregl-popup.cegs-dark-popup .maplibregl-popup-content {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 12px;
+}
+
+.maplibregl-popup.cegs-dark-popup .maplibregl-popup-tip {
+  border-top-color: rgba(18, 18, 20, 0.95) !important;
+}
+
+.maplibregl-ctrl-group {
+  background: rgba(18, 18, 20, 0.85) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.maplibregl-ctrl-group button {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.maplibregl-ctrl-group button:last-child {
+  border-bottom: none !important;
+}
+
+.maplibregl-ctrl-group button:hover {
+  background: rgba(212, 175, 55, 0.15) !important;
+}
+
+.maplibregl-ctrl-group button .maplibregl-ctrl-icon {
+  filter: invert(0.85) sepia(0.2) saturate(2);
+}
+
+/* Leaflet Dark & Gold Overrides */
+.cegs-custom-marker-wrapper {
+  background: transparent !important;
+  border: none !important;
+}
+
+.leaflet-popup.cegs-leaflet-popup .leaflet-popup-content-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 12px;
+}
+
+.leaflet-popup.cegs-leaflet-popup .leaflet-popup-content {
+  margin: 0 !important;
+  line-height: inherit;
+}
+
+.leaflet-popup.cegs-leaflet-popup .leaflet-popup-tip {
+  background: rgba(18, 18, 20, 0.95) !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+.leaflet-bar {
+  background: rgba(18, 18, 20, 0.9) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(212, 175, 55, 0.35) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5) !important;
+}
+
+.leaflet-bar a {
+  background: transparent !important;
+  color: #d4af37 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.2s ease;
+}
+
+.leaflet-bar a:last-child {
+  border-bottom: none !important;
+}
+
+.leaflet-bar a:hover {
+  background: rgba(212, 175, 55, 0.2) !important;
+  color: #fff !important;
+}
+
+.leaflet-container {
+  background-color: #0d0d0f !important;
+  font-family: inherit;
+}
+
+

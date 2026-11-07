@@ -26,25 +26,15 @@
 
 .logo {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
+  align-items: center;
 }
 
-.logoText {
-  font-family: var(--font-heading);
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--text);
-  letter-spacing: 1px;
-}
-
-.logoSub {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 600;
-  color: var(--gold);
-  letter-spacing: 2px;
-  text-transform: uppercase;
+.logoImg {
+  height: 52px;
+  width: 52px;
+  object-fit: contain;
+  border-radius: 50%;
+  display: block;
 }
 
 .nav {
@@ -168,6 +158,8 @@
   font-weight: 600;
   color: var(--color-black);
   background-color: var(--gold);
+  border: none;
+  cursor: pointer;
   padding: 12px 24px;
   border-radius: 100px;
   transition: all 0.3s ease;

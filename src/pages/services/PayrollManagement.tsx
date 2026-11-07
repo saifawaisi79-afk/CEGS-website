@@ -90,23 +90,6 @@ const PayrollManagement = () => {
               </div>
             </div>
           </div>
-          
-          {/* Static abstract graphic representing coins/discs */}
-          <div className={styles.heroGraphics}>
-            <div style={{ position: 'relative', width: '300px', height: '300px' }}>
-              <svg viewBox="0 0 200 200" style={{ width: '100%', height: '100%', overflow: 'visible' }}>
-                <ellipse cx="120" cy="100" rx="30" ry="70" fill="var(--gold-border)" stroke="rgba(212, 175, 55, 0.6)" strokeWidth="2" />
-                <ellipse cx="110" cy="100" rx="30" ry="70" fill="var(--gold-border)" />
-                
-                <ellipse cx="40" cy="110" rx="15" ry="5" fill="none" stroke="rgba(212, 175, 55, 0.6)" strokeWidth="2" />
-                <ellipse cx="170" cy="90" rx="10" ry="20" fill="none" stroke="rgba(212, 175, 55, 0.6)" strokeWidth="2" />
-                <ellipse cx="100" cy="150" rx="12" ry="4" fill="none" stroke="rgba(212, 175, 55, 0.6)" strokeWidth="2" />
-                
-                <line x1="25" y1="110" x2="55" y2="110" stroke="var(--gold-border)" strokeWidth="2" />
-                <line x1="150" y1="90" x2="190" y2="90" stroke="var(--gold-border)" strokeWidth="2" />
-              </svg>
-            </div>
-          </div>
         </div>
       </section>
 

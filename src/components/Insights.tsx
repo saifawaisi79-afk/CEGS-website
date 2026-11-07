@@ -4,8 +4,8 @@ import styles from './Insights.module.css';
 
 const statsData = [
   { id: 1, value: 200, suffix: "+", label: "CLIENTS", decimals: 0 },
-  { id: 2, value: 40, suffix: "K+", label: "TALENT PLACEMENTS", decimals: 0 },
-  { id: 3, value: 5, suffix: ".0", label: "CLIENT REVIEWS", decimals: 1 },
+  { id: 2, value: 2.5, suffix: "L+", label: "TALENT PLACEMENTS", decimals: 1 },
+  { id: 3, value: 4.9, suffix: "", label: "GOOGLE RATING", decimals: 1 },
   { id: 4, value: 50, suffix: "+", label: "STAFFING EXPERTS", decimals: 0 },
   { id: 5, value: 100, suffix: "+", label: "TRAINING PROGRAMS", decimals: 0 },
 ];

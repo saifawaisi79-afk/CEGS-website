@@ -36,18 +36,23 @@ const FooterCTA = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
         >
-          <div className={styles.emailCard}>
+          <a 
+            href="mailto:info@careerexpertglobalsolution.com" 
+            className={styles.emailCard}
+            style={{ textDecoration: 'none' }}
+            title="Email us at info@careerexpertglobalsolution.com"
+          >
             <div className={styles.emailIconWrapper}>
               <Mail className={styles.emailIcon} />
             </div>
             <div className={styles.emailContent}>
               <p className={styles.emailLabel}>Get in touch with us</p>
-              <h4 className={styles.emailAddress}>contact@cegs.com</h4>
+              <h4 className={styles.emailAddress}>info@careerexpertglobalsolution.com</h4>
             </div>
-            <button className={styles.emailBtn}>
+            <div className={styles.emailBtn}>
               <ArrowRight className={styles.emailBtnIcon} />
-            </button>
-          </div>
+            </div>
+          </a>
         </motion.div>
 
       </div>

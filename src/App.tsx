@@ -12,6 +12,7 @@ import BPOKPOServices from './pages/services/BPOKPOServices'
 import TrainingCourses from './pages/services/TrainingCourses'
 import Careers from './pages/Careers'
 import Contact from './pages/Contact'
+import RequestCandidates from './pages/RequestCandidates'
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/services/training-courses" element={<TrainingCourses />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/request-candidates" element={<RequestCandidates />} />
         </Routes>
       </main>
       <Footer />

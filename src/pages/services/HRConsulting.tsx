@@ -77,48 +77,6 @@ const HRConsulting = () => {
               </div>
             </motion.div>
           </div>
-          
-          {/* Abstract graphic representing the image in the screenshot */}
-          <motion.div 
-            className={styles.heroGraphics}
-            style={{ y: parallaxY }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3 }}
-          >
-            <div style={{ position: 'relative', width: '300px', height: '300px' }}>
-              <svg viewBox="0 0 200 200" style={{ width: '100%', height: '100%', overflow: 'visible' }}>
-                <motion.polygon 
-                  points="100,20 180,80 150,170 50,170 20,80" 
-                  fill="none" 
-                  stroke="var(--gold-border)" 
-                  strokeWidth="2"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-                  style={{ transformOrigin: "100px 100px" }}
-                />
-                <motion.circle 
-                  cx="100" cy="100" r="30" 
-                  fill="var(--gold-border)"
-                  animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                />
-                {/* Dots representing the figures */}
-                {[
-                  { cx: 100, cy: 20 },
-                  { cx: 180, cy: 80 },
-                  { cx: 150, cy: 170 },
-                  { cx: 50, cy: 170 },
-                  { cx: 20, cy: 80 }
-                ].map((point, i) => (
-                  <g key={i}>
-                    <line x1="100" y1="100" x2={point.cx} y2={point.cy} stroke="var(--gold-border)" strokeWidth="1" />
-                    <circle cx={point.cx} cy={point.cy} r="8" fill="var(--gold)" />
-                  </g>
-                ))}
-              </svg>
-            </div>
-          </motion.div>
         </div>
       </section>
 
